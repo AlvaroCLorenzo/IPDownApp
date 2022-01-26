@@ -23,10 +23,10 @@
 
             <TextView
                 android:id="@+id/labMapa"
-                android:layout_width="214dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginTop="32dp"
-                android:text="MAPA"
+                android:text="YOUR TARGET LOCATION:"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textSize="27sp"
@@ -63,12 +63,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/navegador" />
 
             <TextView
-                android:id="@+id/textViewPaisLabel"
+                android:id="@+id/textViewCountryLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="44dp"
-                android:text="País:"
+                android:text="Country:"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -82,21 +82,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="44dp"
-                android:text="Región:"
+                android:text="Region:"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPaisLabel" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewCountryLabel" />
 
             <TextView
-                android:id="@+id/textViewCiudadLabel"
+                android:id="@+id/textViewCityLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="44dp"
-                android:text="Ciudad:"
+                android:text="City:"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -105,18 +105,77 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewRegionLabel" />
 
             <TextView
-                android:id="@+id/textViewCodigoPostalLabel"
+                android:id="@+id/textViewZipCodeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="44dp"
-                android:text="Código Postal:"
+                android:text="Zip Code:"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewCiudadLabel" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewCityLabel" />
+
+            <TextView
+                android:id="@+id/textViewIPResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="50dp"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/navegador" />
+
+            <TextView
+                android:id="@+id/textViewCountryResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="50dp"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewIPResult" />
+
+            <TextView
+                android:id="@+id/textViewRegionResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="50dp"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCountryResult" />
+
+            <TextView
+                android:id="@+id/textViewCityResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="50dp"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRegionResult" />
+
+            <TextView
+                android:id="@+id/textViewZipCodeResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="50dp"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCityResult" />
 
             <EditText
                 android:id="@+id/editTextIPTarget"
@@ -132,7 +191,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/btnBuscar"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewCodigoPostalLabel" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewZipCodeLabel" />
 
             <Button
                 android:id="@+id/btnBuscar"
@@ -146,65 +205,6 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextIPTarget" />
-
-            <TextView
-                android:id="@+id/textViewIPResultado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="50dp"
-                android:textAlignment="textEnd"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/navegador" />
-
-            <TextView
-                android:id="@+id/textViewPaisResultado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="50dp"
-                android:textAlignment="textEnd"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewIPResultado" />
-
-            <TextView
-                android:id="@+id/textViewRegionResultado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="50dp"
-                android:textAlignment="textEnd"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPaisResultado" />
-
-            <TextView
-                android:id="@+id/textViewCiudadResultado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="50dp"
-                android:textAlignment="textEnd"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewRegionResultado" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="50dp"
-                android:textAlignment="textEnd"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewCiudadResultado" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
