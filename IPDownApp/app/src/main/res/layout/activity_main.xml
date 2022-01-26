@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@drawable/logo_ipdownapp"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/panelPrincipal"
-        android:layout_width="349dp"
+        android:layout_width="310dp"
         android:layout_height="517dp"
         app:cardBackgroundColor="#67673AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
