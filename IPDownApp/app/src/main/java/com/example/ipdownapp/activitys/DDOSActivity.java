@@ -7,12 +7,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.ipdownapp.R;
+import com.example.ipdownapp.handlers.DDOSHandler;
 
 public class DDOSActivity extends AppCompatActivity {
 
     private EditText ipTargetDDOS;
     private EditText consolaDDOS;
     private Button botonAtack;
+    private DDOSHandler controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +26,23 @@ public class DDOSActivity extends AppCompatActivity {
         ipTargetDDOS = findViewById(R.id.editTextIPTargetDDOS);
         botonAtack = findViewById(R.id.botonAtack);
         consolaDDOS = findViewById(R.id.editTextMultilineConsola);
+        controller = new DDOSHandler(this);
+        botonAtack.setOnClickListener(controller);
+    }
+
+    public String getTextIpTargetDDOS() {
+        return ipTargetDDOS.getText().toString();
+    }
+
+    public void setIpTargetDDOS(String ipTargetDDOS) {
+        this.ipTargetDDOS.setText(ipTargetDDOS);
+    }
+
+    public String getTextConsolaDDOS() {
+        return consolaDDOS.getText().toString();
+    }
+
+    public void setConsolaDDOS(String consolaDDOS) {
+        this.consolaDDOS.setText(consolaDDOS);
     }
 }
