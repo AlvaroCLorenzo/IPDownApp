@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\####\\AndroidStudioProjects\\EasyIPDown\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_info.xml",
+        "source": "C:\\Users\\####\\AndroidStudioProjects\\EasyIPDown\\app\\src\\main\\res\\layout\\activity_info.xml"
+    },
+    {
+        "merged": "C:\\Users\\####\\AndroidStudioProjects\\EasyIPDown\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\####\\AndroidStudioProjects\\EasyIPDown\\app\\src\\main\\res\\layout\\activity_main.xml"
+    }
+]

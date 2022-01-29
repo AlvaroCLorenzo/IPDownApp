@@ -1,0 +1,13 @@
+com/example/easyipdown/BuildConfig.java
+ com.example.easyipdown.BuildConfig
+com/example/easyipdown/MainHandler.java
+ com.example.easyipdown.MainHandler
+com/example/easyipdown/databinding/ActivityInfoBinding.java
+ com.example.easyipdown.databinding.ActivityInfoBinding
+com/example/easyipdown/databinding/ActivityMainBinding.java
+ com.example.easyipdown.databinding.ActivityMainBinding
+com/example/easyipdown/MainActivity.java
+ com.example.easyipdown.MainActivity
+com/example/easyipdown/InfoActivity.java
+ com.example.easyipdown.InfoActivity
+ com.example.easyipdown.InfoActivity$1
