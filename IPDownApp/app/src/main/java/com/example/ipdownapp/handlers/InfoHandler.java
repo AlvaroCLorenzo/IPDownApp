@@ -8,5 +8,8 @@ public class InfoHandler {
 
     public InfoHandler(InfoActivity vista) {
         this.vista = vista;
+
+
+
     }
 }
