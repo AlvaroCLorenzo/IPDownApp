@@ -33,7 +33,8 @@ public class InfoHandler implements View.OnClickListener {
 
         String ip = vista.getIpTarget();
 
-            consultarIp(ip);
+        consultarIp(ip);
+
 
     }
 
