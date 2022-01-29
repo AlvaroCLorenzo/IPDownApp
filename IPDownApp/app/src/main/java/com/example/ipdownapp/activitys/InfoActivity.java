@@ -23,6 +23,8 @@ public class InfoActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         controlador = new InfoHandler(this);
 
         navegador = findViewById(R.id.navegador);

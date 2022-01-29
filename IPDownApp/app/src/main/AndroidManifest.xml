@@ -10,14 +10,15 @@
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icono_app_ipdownapp_launcher"
         android:label="IPDownApp"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icono_app_ipdownapp_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IPDownApp">
         <activity
             android:name="com.example.ipdownapp.activitys.InfoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activitys.MainActivity"/>
 
         <activity
             android:name="com.example.ipdownapp.activitys.MainActivity"
