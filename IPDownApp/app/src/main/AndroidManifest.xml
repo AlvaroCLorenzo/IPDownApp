@@ -16,11 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IPDownApp">
         <activity
-            android:name="com.example.ipdownapp.InfoActivity"
+            android:name="com.example.ipdownapp.activitys.InfoActivity"
             android:exported="false" />
 
         <activity
-            android:name="com.example.ipdownapp.MainActivity"
+            android:name="com.example.ipdownapp.activitys.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
