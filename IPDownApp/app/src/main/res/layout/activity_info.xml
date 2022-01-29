@@ -50,6 +50,11 @@
 
             </WebView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="104dp" />
+
             <TextView
                 android:id="@+id/textViewIPLabel"
                 android:layout_width="wrap_content"
@@ -139,8 +144,8 @@
                 android:layout_marginTop="44dp"
                 android:layout_marginEnd="50dp"
                 android:textAlignment="textEnd"
-                android:textSize="16sp"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewIPResult" />
@@ -195,7 +200,7 @@
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toTopOf="@+id/btnBuscar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.623"
                 app:layout_constraintStart_toEndOf="@+id/btnBuscar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewZipCodeLabel" />
