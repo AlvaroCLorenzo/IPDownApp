@@ -26,6 +26,7 @@ public class DDOSActivity extends AppCompatActivity {
         ipTargetDDOS = findViewById(R.id.editTextIPTargetDDOS);
         botonAtack = findViewById(R.id.botonAtack);
         consolaDDOS = findViewById(R.id.editTextMultilineConsola);
+
         controller = new DDOSHandler(this);
         botonAtack.setOnClickListener(controller);
     }
@@ -42,7 +43,7 @@ public class DDOSActivity extends AppCompatActivity {
         return consolaDDOS.getText().toString();
     }
 
-    public void setConsolaDDOS(String consolaDDOS) {
-        this.consolaDDOS.setText(consolaDDOS);
+    public synchronized void setConsolaDDOS(String consolaDDOS) {
+        this.consolaDDOS.append(consolaDDOS + "\n");
     }
 }
