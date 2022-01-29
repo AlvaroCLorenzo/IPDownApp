@@ -6,15 +6,29 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ipdownapp.R;
 import com.example.ipdownapp.handlers.InfoHandler;
 
 public class InfoActivity extends AppCompatActivity{
 
+    private Button btnBuscar;
+
+    private EditText inIpTarget;
+
+    private TextView labIp;
+    private TextView labCountry;
+    private TextView labRegion;
+    private TextView labCity;
+    private TextView labZipCode;
+
     private InfoHandler controlador;
 
-    private final String mapURL = "https://www.google.com/maps/search/?api=1&query=36.26577,-92.54324";
+
     private WebView navegador;
 
     @Override
@@ -26,6 +40,15 @@ public class InfoActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         controlador = new InfoHandler(this);
+
+        confComponentes();
+
+
+    }
+
+    private void confComponentes() {
+
+        //web view
 
         navegador = findViewById(R.id.navegador);
 
@@ -40,10 +63,57 @@ public class InfoActivity extends AppCompatActivity{
 
         navegador.setWebViewClient(new WebViewClient());
 
-        navegador.loadUrl(mapURL);
+        //boton
+        btnBuscar = findViewById(R.id.btnBuscar);
+
+        btnBuscar.setOnClickListener(controlador);
+
+        //labels
+
+        labIp = findViewById(R.id.textViewIPResult);
+        labCity = findViewById(R.id.textViewCityResult);
+        labCountry = findViewById(R.id.textViewCountryResult);
+        labRegion = findViewById(R.id.textViewRegionResult);
+        labZipCode = findViewById(R.id.textViewZipCodeResult);
+
+        //input
+        inIpTarget = findViewById(R.id.editTextIPTarget);
 
     }
 
+    public String getIpTarget(){
+        return inIpTarget.getText().toString();
+    }
 
+    public void mensajeErrorFormatoIp(){
+        Toast.makeText(this, "The format of the Ip v4 entered is not correct.", Toast.LENGTH_SHORT).show();
+    }
 
+    public void mensajeErrorConexion(){
+        Toast.makeText(this, "Connection error.", Toast.LENGTH_SHORT).show();
+    }
+
+    public void setLabIp(String ip) {
+        this.labIp.setText(ip);
+    }
+
+    public void setLabCountry(String country) {
+        this.labCountry.setText(country);
+    }
+
+    public void setLabRegion(String region) {
+        this.labRegion.setText(region);
+    }
+
+    public void setLabCity(String city) {
+        this.labCity.setText(city);
+    }
+
+    public void setLabZipCode(String zipCode) {
+        this.labZipCode.setText(zipCode);
+    }
+
+    public void actualizarURLMapa(String url){
+        navegador.loadUrl(url);
+    }
 }
