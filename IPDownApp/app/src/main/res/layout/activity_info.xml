@@ -209,7 +209,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="Introduce the IP target"
-                        android:inputType="numberDecimal"
+                        android:inputType="textUri"
                         android:minHeight="48dp"
                         app:layout_constraintBottom_toTopOf="@+id/btnBuscar"
                         app:layout_constraintEnd_toEndOf="parent"
