@@ -2,26 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ipdownapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/icono_app_ipdownapp_launcher"
         android:label="IPDownApp"
         android:roundIcon="@mipmap/icono_app_ipdownapp_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.IPDownApp">
+        android:theme="@style/Theme.IPDownApp"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name="com.example.ipdownapp.activitys.InfoActivity"
+            android:name=".activitys.DDOSActivity"
             android:exported="false"
             android:parentActivityName=".activitys.MainActivity"/>
-
         <activity
-            android:name="com.example.ipdownapp.activitys.MainActivity"
+            android:name=".activitys.InfoActivity"
+            android:exported="false"
+            android:parentActivityName=".activitys.MainActivity" />
+        <activity
+            android:name=".activitys.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

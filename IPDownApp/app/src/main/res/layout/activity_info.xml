@@ -41,11 +41,11 @@
 
             <WebView
                 android:id="@+id/navegador"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="447dp"
                 android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/labMapa">
 
@@ -209,7 +209,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="Introduce the IP target"
-                        android:inputType="textPersonName"
+                        android:inputType="numberDecimal"
                         android:minHeight="48dp"
                         app:layout_constraintBottom_toTopOf="@+id/btnBuscar"
                         app:layout_constraintEnd_toEndOf="parent"
