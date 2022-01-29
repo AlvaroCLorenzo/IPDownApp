@@ -1,10 +1,13 @@
-package com.example.ipdownapp;
+package com.example.ipdownapp.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.example.ipdownapp.handlers.MainHandler;
+import com.example.ipdownapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
