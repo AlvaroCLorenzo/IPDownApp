@@ -1,4 +1,4 @@
-package com.example.ipdownapp;
+package com.example.ipdownapp.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,8 +7,12 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.example.ipdownapp.R;
+import com.example.ipdownapp.handlers.InfoHandler;
+
 public class InfoActivity extends AppCompatActivity{
 
+    private InfoHandler controlador;
 
     private final String mapURL = "https://www.google.com/maps/search/?api=1&query=36.26577,-92.54324";
     private WebView navegador;
@@ -19,18 +23,17 @@ public class InfoActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
+        controlador = new InfoHandler(this);
+
         navegador = findViewById(R.id.navegador);
 
         navegador.getSettings().setJavaScriptEnabled(true);
 
-        navegador.setOnTouchListener(new View.OnTouchListener() {
-            // Setting on Touch Listener for handling the touch inside ScrollView
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // Disallow the touch request for parent scroll on touch of child view
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
+        // Setting on Touch Listener for handling the touch inside ScrollView
+        navegador.setOnTouchListener((v, event) -> {
+            // Disallow the touch request for parent scroll on touch of child view
+            v.getParent().requestDisallowInterceptTouchEvent(true);
+            return false;
         });
 
         navegador.setWebViewClient(new WebViewClient());

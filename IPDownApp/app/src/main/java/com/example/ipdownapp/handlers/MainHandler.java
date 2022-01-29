@@ -1,6 +1,9 @@
-package com.example.ipdownapp;
+package com.example.ipdownapp.handlers;
 
 import android.view.View;
+
+import com.example.ipdownapp.R;
+import com.example.ipdownapp.activitys.MainActivity;
 
 public class MainHandler implements View.OnClickListener {
 
