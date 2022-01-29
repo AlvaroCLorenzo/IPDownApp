@@ -57,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void goDDOS(){
 
+        Intent pasador = new Intent(MainActivity.this, DDOSActivity.class);
 
+        startActivity(pasador);
 
     }
 }
