@@ -43,6 +43,9 @@ public class DDOSActivity extends AppCompatActivity {
 
     public String getTextIpTargetDDOS() {
         String ip = ipTargetDDOS.getText().toString();
+
+        if(ip.equals(""))ip = null;
+
         return ip;
     }
 
@@ -56,7 +59,10 @@ public class DDOSActivity extends AppCompatActivity {
 
 
     public String getTextNumberThread(){
-        return this.numberThreads.getText().toString();
+
+        String numberThreads = this.numberThreads.getText().toString();
+        if(numberThreads.equals(""))numberThreads = null;
+        return numberThreads;
     }
 
     public synchronized void setConsolaDDOS(String consolaDDOS) {

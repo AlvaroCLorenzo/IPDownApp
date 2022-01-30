@@ -52,7 +52,7 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
         String ipTarget = vista.getTextIpTargetDDOS();
         String numThreads = vista.getTextNumberThread();
         //Evitamos que el usuario no introduzca alguno de los campos.
-        if(!ipTarget.equals(null) && !numThreads.equals(null)){
+        if(ipTarget != null  && numThreads !=null){
             //si no existe el atacker lo crea
             if(attacker == null){
                 try{
