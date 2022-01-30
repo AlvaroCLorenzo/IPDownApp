@@ -11,13 +11,13 @@ public class DataController extends Thread{
     private Notificable notificable;
     private ConsoleStateQueue colaDatos;
 
-    public boolean activo;
+    private boolean run;
 
     public DataController(Notificable notificable, ConsoleStateQueue colaDatos) {
 
         this.notificable = notificable;
         this.colaDatos = colaDatos;
-        this.activo = true;
+        this.run = true;
 
     }
 
@@ -27,7 +27,7 @@ public class DataController extends Thread{
         StringBuffer mensaje = new StringBuffer();
         ArrayList<String> colaMensajes;
 
-        while(activo){
+        while(run){
 
             //se conformael mensaje
             mensaje.append("Succesfull request: " + colaDatos.getPeticionesExitosas() + "\n");
@@ -81,5 +81,14 @@ public class DataController extends Thread{
         });
 
 
+    }
+
+
+    public boolean isRun() {
+        return run;
+    }
+
+    public void setRun(boolean run) {
+        this.run = run;
     }
 }

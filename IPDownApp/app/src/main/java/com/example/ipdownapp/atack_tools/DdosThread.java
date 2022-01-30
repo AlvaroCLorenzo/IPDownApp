@@ -18,16 +18,18 @@ public class DdosThread extends Thread{
 
     private ConsoleStateQueue colaDatos;
 
-    private AtomicBoolean running = new AtomicBoolean(true);
+    private volatile boolean run;
+
     private String request;
     private URL url;
-
 
     String param = null;
 
     public DdosThread(ConsoleStateQueue colaDatos){
         this.colaDatos = colaDatos;
         this.id = ++autoId;
+
+        run = true;
     }
 
     public void setRequestURL(String request) {
@@ -41,7 +43,7 @@ public class DdosThread extends Thread{
     @Override
     public void run() {
 
-        while (running.get()) {
+        while (run) {
 
             try {
                 attack();
@@ -89,13 +91,15 @@ public class DdosThread extends Thread{
 
         if (connection != null) connection.disconnect();
 
-        System.out.println(connection.getResponseMessage());
-
         colaDatos.incPeticionesExitosas();
 
     }
 
+    public boolean isRun() {
+        return run;
+    }
 
-
-
+    public void setRun(boolean run) {
+        this.run = run;
+    }
 }

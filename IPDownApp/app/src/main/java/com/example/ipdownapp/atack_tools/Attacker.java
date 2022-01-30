@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Attacker {
 
-    private int num_threadsDDOS = 4;
+    private int num_threadsDDOS;
 
     private DataController controladorConsola;
 
@@ -24,7 +24,15 @@ public class Attacker {
 
     private ArrayList<DdosThread> hilosDdos;
 
-    public Attacker(String url_request, int num_threads, Notificable notificable) throws Exception {
+    private boolean attack;
+
+    private String urlAttack;
+
+    public Attacker(String urlAttack, int numThreads, Notificable notificable) throws Exception {
+
+        this.urlAttack = urlAttack;
+
+       this.num_threadsDDOS = numThreads;
 
         //se crea el recurso compartido entre los hilos
         colaDatos = new ConsoleStateQueue();
@@ -34,20 +42,45 @@ public class Attacker {
 
         hilosDdos = new ArrayList<DdosThread>();
 
-        controladorConsola.start();
+        attack = false;
 
+    }
+
+    public void iniciarAtaque(){
+
+        attack = true;
+
+        controladorConsola.start();
 
         for (int i = 0; i < this.num_threadsDDOS; i++) {
 
             DdosThread thread = new DdosThread(colaDatos);
 
-            thread.setRequestURL(url_request);
+            thread.setRequestURL(urlAttack);
 
             hilosDdos.add(thread);
 
             thread.start();
 
         }
+
     }
+
+    public void pararAtaque(){
+
+        for (DdosThread i:hilosDdos){
+            i.setRun(false);
+        }
+
+        controladorConsola.setRun(false);
+
+        attack = false;
+
+    }
+
+    public boolean isAttack() {
+        return attack;
+    }
+
 
 }
