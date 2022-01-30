@@ -7,70 +7,122 @@
     android:background="@drawable/logo_ipdownapp"
     tools:context=".activitys.DDOSActivity">
 
-    <TextView
-        android:id="@+id/textViewDDOSATACKLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="DDOS ATACK"
-        android:textColor="@color/white"
-        android:textSize="27sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <EditText
-        android:id="@+id/editTextIPTargetDDOS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Introduce the IP target"
-        android:inputType="textUri"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/botonAtack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDDOSATACKLabel" />
-
-    <Button
-        android:id="@+id/botonAtack"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:background="@drawable/shape_buttons_100"
-        android:text="ATACK"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextMultilineConsola"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIPTargetDDOS" />
-
-    <EditText
-        android:id="@+id/editTextMultilineConsola"
-        android:layout_width="320dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="30dp"
-        android:alpha="0.7"
-        android:background="@drawable/shape_consola_100"
-        android:ems="10"
-        android:focusable="false"
-        android:fontFamily="@font/cutive_mono"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:padding="10dp"
-        android:textColor="@color/teal_200"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+
+            <Button
+                android:id="@+id/botonAtack"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/shape_buttons_100"
+                android:text="ATACK"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/botonStop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextMultilineConsola" />
+
+            <EditText
+                android:id="@+id/editTextMultilineConsola"
+                android:layout_width="320dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="30dp"
+                android:alpha="0.7"
+                android:background="@drawable/shape_consola_100"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/cutive_mono"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textColor="@color/teal_200"
+                app:layout_constraintBottom_toTopOf="@+id/botonAtack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/editTextIPTargetDDOS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Introduce the IP target"
+                android:inputType="textUri"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDDOSATACKLabel" />
+
+            <TextView
+                android:id="@+id/textViewDDOSATACKLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="DDOS ATACK"
+                android:textColor="@color/white"
+                android:textSize="27sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toTopOf="@+id/editTextIPTargetDDOS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Number of threads"
+                android:inputType="number"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextMultilineConsola"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextIPTargetDDOS" />
+
+            <Button
+                android:id="@+id/botonStop"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/shape_buttons_100"
+                android:text="STOP"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/botonAtack" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
