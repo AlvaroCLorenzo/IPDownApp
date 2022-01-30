@@ -19,8 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp">
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/botonAtack"
@@ -112,6 +111,7 @@
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="13dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/shape_buttons_100"
                 android:text="STOP"
                 android:textSize="20sp"
