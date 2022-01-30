@@ -12,8 +12,10 @@ import com.example.ipdownapp.handlers.DDOSHandler;
 public class DDOSActivity extends AppCompatActivity {
 
     private EditText ipTargetDDOS;
+    private EditText numberThreads;
     private EditText consolaDDOS;
     private Button botonAtack;
+    private Button botonStop;
     private DDOSHandler controller;
 
     @Override
@@ -24,11 +26,16 @@ public class DDOSActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ipTargetDDOS = findViewById(R.id.editTextIPTargetDDOS);
+        numberThreads = findViewById(R.id.numberThreads);
         botonAtack = findViewById(R.id.botonAtack);
+        botonStop = findViewById(R.id.botonStop);
         consolaDDOS = findViewById(R.id.editTextMultilineConsola);
 
         controller = new DDOSHandler(this);
         botonAtack.setOnClickListener(controller);
+        botonStop.setOnClickListener(controller);
+
+
     }
 
     public String getTextIpTargetDDOS() {
@@ -41,6 +48,11 @@ public class DDOSActivity extends AppCompatActivity {
 
     public String getTextConsolaDDOS() {
         return consolaDDOS.getText().toString();
+    }
+
+
+    public String getTextNumberThread(){
+        return this.numberThreads.getText().toString();
     }
 
     public synchronized void setConsolaDDOS(String consolaDDOS) {
