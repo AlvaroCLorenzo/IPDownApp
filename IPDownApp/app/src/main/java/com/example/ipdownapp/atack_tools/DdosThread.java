@@ -2,6 +2,7 @@ package com.example.ipdownapp.atack_tools;
 
 import com.example.ipdownapp.models.ConsoleStateQueue;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -47,14 +48,14 @@ public class DdosThread extends Thread{
 
             try {
                 attack();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println(e.getMessage());
                 colaDatos.incPeticionesErroneas();
             }
         }
     }
 
-    public void attack() throws Exception {
+    public void attack() throws IOException {
 
         HttpURLConnection connection = null;
         OutputStream out = null;
@@ -63,7 +64,7 @@ public class DdosThread extends Thread{
 
         //Creamos un objeto connection
         connection = (HttpURLConnection) this.url.openConnection();
-        connection.setReadTimeout(2000);
+        connection.setReadTimeout(5000);
         connection.setUseCaches(false);
         connection.setRequestProperty("charset", "utf-8");
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");

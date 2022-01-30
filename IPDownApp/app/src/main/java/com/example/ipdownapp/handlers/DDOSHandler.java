@@ -44,6 +44,7 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
 
         if(attacker != null && attacker.isAttack()){
             attacker.pararAtaque();
+            attacker = null;
         }
 
     }
