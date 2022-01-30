@@ -21,20 +21,19 @@ import retrofit2.Response;
 
 public class MainHandler implements View.OnClickListener {
 
-    private final String URL_SERVICE = "https://api.freegeoip.app/json/";
+    private final String URL_SERVICE = "https://api.freegeoip.app/";
     private final String API_KEY = "fce938f0-8109-11ec-b2e9-6595f9a9e24d";
 
 
     private MainActivity view;
     private IPInfo ipInfo = null;
-    private String publicAddress = "";
-    private String privateAddress = "";
+
 
 
     public MainHandler(MainActivity view) {
         this.view = view;
-        this.view.setPublicIP(consultarPublicIp());
-        this.view.setPrivateIP(consultarPrivateIp());
+        consultarPublicIp();
+        consultarPrivateIp();
     }
 
     @Override
@@ -57,7 +56,7 @@ public class MainHandler implements View.OnClickListener {
 
     }
 
-    private String consultarPublicIp() {
+    private void  consultarPublicIp() {
         FreeGeoIPService servicio = API.getApi(URL_SERVICE).create(FreeGeoIPService.class);
         Call<IPInfo> peticionIP = servicio.infoIpPropia(API_KEY);
 
@@ -65,7 +64,7 @@ public class MainHandler implements View.OnClickListener {
             @Override
             public void onResponse(Call<IPInfo> call, Response<IPInfo> response) {
                 ipInfo = response.body();
-                publicAddress = ipInfo.getIp();
+                view.setPublicIP(ipInfo.getIp());
             }
 
             @Override
@@ -74,10 +73,12 @@ public class MainHandler implements View.OnClickListener {
             }
         });
 
-        return publicAddress;
     }
 
-    private String consultarPrivateIp() {
+    private void consultarPrivateIp() {
+
+        boolean encontrada = false;
+        String privateAddress;
         List<InetAddress> addressess;
         try{
             List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
@@ -86,12 +87,21 @@ public class MainHandler implements View.OnClickListener {
                 for(InetAddress addr : addressess){
                     if(!addr.isLoopbackAddress() && addr instanceof Inet4Address){
                         privateAddress = addr.getHostAddress().toUpperCase(new Locale("es", "SP"));
+                        view.setPrivateIP(privateAddress);
+                        encontrada = true;
                     }
+
+                    if(encontrada){
+                        break;
+                    }
+                }
+
+                if(encontrada){
+                    break;
                 }
             }
         }catch (Exception e){
             System.out.println("Exception at getting private IP address.");
         }
-        return privateAddress;
     }
 }

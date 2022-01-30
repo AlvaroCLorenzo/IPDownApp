@@ -15,7 +15,7 @@ public class InfoHandler implements View.OnClickListener {
 
     private InfoActivity vista;
 
-    private final String URL_SERVICE = "https://api.freegeoip.app/json/";
+    private final String URL_SERVICE = "https://api.freegeoip.app/";
     private final String API_KEY = "fce938f0-8109-11ec-b2e9-6595f9a9e24d";
 
     private final String GOOGLE_MAPS_URL_REQUEST = "https://www.google.com/maps/search/?api=1&query=";

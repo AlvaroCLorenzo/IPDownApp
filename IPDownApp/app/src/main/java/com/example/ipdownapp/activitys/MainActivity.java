@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setPublicIP(String publicIP){
-        this.privateIP.setText(publicIP);
+        this.publicIP.setText(publicIP);
     }
 
     public void setPrivateIP(String privateIP){

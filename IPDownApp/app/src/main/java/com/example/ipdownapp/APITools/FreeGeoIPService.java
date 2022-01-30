@@ -9,10 +9,10 @@ import retrofit2.http.Query;
 
 public interface FreeGeoIPService {
 
-    @GET("{ip}")
+    @GET("json/{ip}")
     Call<IPInfo> infoIp(@Path("ip") String ip, @Query("apikey") String key);
 
-    @GET(" ")
+    @GET("json")
     Call<IPInfo> infoIpPropia(@Query("apikey") String key);
 
 }
