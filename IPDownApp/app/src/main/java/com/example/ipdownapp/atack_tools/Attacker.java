@@ -22,7 +22,7 @@ public class Attacker {
         DdosThread.notificable = notificable;
 
         //this.num_threads = num_threads;
-        this.num_threadsDDOS = 1;
+        this.num_threadsDDOS = 10;
         for (int i = 0; i < this.num_threadsDDOS; i++) {
             DdosThread thread = new DdosThread();
             thread.setRequestURL(url_request);
