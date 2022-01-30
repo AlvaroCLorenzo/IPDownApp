@@ -116,13 +116,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewPublicIPLabel" />
 
             <TextView
-                android:id="@+id/textViewPulicIPResult"
+                android:id="@+id/textViewPublicIPResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="28dp"
                 android:fontFamily="@font/cutive_mono"
-                android:text="192.168.15.1"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -131,19 +130,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewYoutIPAdressesLabel" />
 
             <TextView
-                android:id="@+id/textViewPrivateIpResult"
+                android:id="@+id/textViewPrivateIPResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="28dp"
                 android:fontFamily="@font/cutive_mono"
-                android:text="192.168.15.1"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPulicIPResult" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewPublicIPResult" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@ public interface FreeGeoIPService {
     @GET("{ip}")
     Call<IPInfo> infoIp(@Path("ip") String ip, @Query("apikey") String key);
 
-    @GET("")
+    @GET(" ")
     Call<IPInfo> infoIpPropia(@Query("apikey") String key);
 
 }
