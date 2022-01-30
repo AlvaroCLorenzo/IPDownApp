@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ipdownapp.R;
 import com.example.ipdownapp.handlers.DDOSHandler;
 
 public class DDOSActivity extends AppCompatActivity {
+
+    private final String ERROR_CAMPOS = "ERROR: Complete all the items before atack";
 
     private EditText ipTargetDDOS;
     private EditText numberThreads;
@@ -39,7 +42,8 @@ public class DDOSActivity extends AppCompatActivity {
     }
 
     public String getTextIpTargetDDOS() {
-        return ipTargetDDOS.getText().toString();
+        String ip = ipTargetDDOS.getText().toString();
+        return ip;
     }
 
     public void setIpTargetDDOS(String ipTargetDDOS) {
@@ -57,5 +61,9 @@ public class DDOSActivity extends AppCompatActivity {
 
     public synchronized void setConsolaDDOS(String consolaDDOS) {
         this.consolaDDOS.append(consolaDDOS + "\n");
+    }
+
+    public void mensajeErrorCampos() {
+        Toast.makeText(this, ERROR_CAMPOS, Toast.LENGTH_SHORT).show();
     }
 }

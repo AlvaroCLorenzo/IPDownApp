@@ -49,15 +49,14 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
     }
 
     private void goDDOS() {
-
-        String url = vista.getTextIpTargetDDOS();
-
-        int numThreads = Integer.valueOf(vista.getTextNumberThread());
-
+        String ipTarget = vista.getTextIpTargetDDOS();
+        String numThreads = vista.getTextNumberThread();
+        //Evitamos que el usuario no introduzca alguno de los campos.
+        if(ipTarget.equals(null) && numThreads.equals(null)){
             //si no existe el atacker lo crea
             if(attacker == null){
                 try{
-                    attacker = new Attacker(url, numThreads, this);
+                    attacker = new Attacker(ipTarget, Integer.valueOf(numThreads), this);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -66,7 +65,9 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
             if(!attacker.isAttack()){
                 attacker.iniciarAtaque();
             }
-
+        }else{
+            vista.mensajeErrorCampos();
+        }
     }
 
     @Override

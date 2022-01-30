@@ -64,6 +64,7 @@ public class MainHandler implements View.OnClickListener {
             @Override
             public void onResponse(Call<IPInfo> call, Response<IPInfo> response) {
                 ipInfo = response.body();
+                System.out.println(ipInfo);
                 view.setPublicIP(ipInfo.getIp());
             }
 
