@@ -36,6 +36,7 @@ public class Attacker {
 
         controladorConsola.start();
 
+
         for (int i = 0; i < this.num_threadsDDOS; i++) {
 
             DdosThread thread = new DdosThread(colaDatos);
