@@ -4,6 +4,12 @@ import com.example.ipdownapp.models.ConsoleStateQueue;
 
 import java.util.ArrayList;
 
+
+/**
+ * Es el hilo encargado de notificar el estado del ataque a un notificable, esto
+ * se hace por medio del recurso compartido ConsoleStateQuere
+ */
+
 public class DataController extends Thread{
 
     private final long DELAY_ACTUALIZACION = 1000;

@@ -14,6 +14,14 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * El cometido de esta clase es gestionar el ataque Ddos.
+ * Clase que sirve para desplegar el sistema de hilos del ataque
+ * para pararlo cuando se requiera y para crear el hilo que notifica
+ * al notificable de los mensajes.
+ *
+ */
+
 public class Attacker {
 
     private int num_threadsDDOS;

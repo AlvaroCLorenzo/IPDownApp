@@ -134,9 +134,7 @@ public class InfoHandler implements View.OnClickListener {
                 = "(\\d{1,2}|(0|1)\\"
                 + "d{2}|2[0-4]\\d|25[0-5])";
 
-        // Regex for a digit from 0 to 255 and
-        // followed by a dot, repeat 4 times.
-        // this is the regex to validate an IP address.
+
         String IPv4Pattern = zeroTo255 + "\\."
                 + zeroTo255 + "\\."
                 + zeroTo255 + "\\."

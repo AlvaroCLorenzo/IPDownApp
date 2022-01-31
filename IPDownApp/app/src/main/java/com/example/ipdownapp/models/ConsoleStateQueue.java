@@ -2,6 +2,10 @@ package com.example.ipdownapp.models;
 
 import java.util.ArrayList;
 
+/**
+ * Recurso compartido por muchos hilos para ir actualizando la información de la consola.
+ */
+
 public class ConsoleStateQueue {
 
     boolean escribiendoMensajes;
