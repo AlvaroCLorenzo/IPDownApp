@@ -21,13 +21,12 @@ import retrofit2.Response;
 
 public class MainHandler implements View.OnClickListener {
 
-    private final String URL_SERVICE = "https://api.freegeoip.app/";
-    private final String API_KEY = "fce938f0-8109-11ec-b2e9-6595f9a9e24d";
+    public static final String URL_SERVICE = "https://api.ipgeolocation.io/";
+    public static String API_KEY = "1d3a40f6ebf44211ab327b20f8939dfc";
 
 
     private MainActivity view;
     private IPInfo ipInfo = null;
-
 
 
     public MainHandler(MainActivity view) {
@@ -64,8 +63,14 @@ public class MainHandler implements View.OnClickListener {
             @Override
             public void onResponse(Call<IPInfo> call, Response<IPInfo> response) {
                 ipInfo = response.body();
-                System.out.println(ipInfo);
-                view.setPublicIP(ipInfo.getIp());
+
+                if(ipInfo != null){
+                    System.out.println(ipInfo);
+                    view.setPublicIP(ipInfo.getIp());
+                }else{
+                    view.mensajeErrorConexion();
+                }
+
             }
 
             @Override

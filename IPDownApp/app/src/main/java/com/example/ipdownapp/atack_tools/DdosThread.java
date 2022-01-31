@@ -10,6 +10,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Hilo encargado de realizar peticiones en bucle.
+ */
+
 public class DdosThread extends Thread{
 
 
