@@ -54,7 +54,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/numberThreads"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
@@ -100,7 +100,7 @@
                 android:hint="Number of threads"
                 android:inputType="number"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextMultilineConsola"
+                app:layout_constraintBottom_toTopOf="@+id/radioGroup"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,6 +121,32 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/botonAtack" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="76dp"
+                android:layout_height="92dp"
+                android:layout_marginTop="36dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextMultilineConsola"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numberThreads">
+
+                <RadioButton
+                    android:id="@+id/radioGET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GET"
+                    android:textColor="#FFFFFF" />
+
+                <RadioButton
+                    android:id="@+id/radioPOST"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="POST"
+                    android:textColor="#FFFFFF" />
+            </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

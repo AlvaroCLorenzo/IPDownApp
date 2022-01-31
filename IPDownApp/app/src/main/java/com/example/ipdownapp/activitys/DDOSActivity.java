@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.ipdownapp.R;
@@ -16,6 +17,10 @@ public class DDOSActivity extends AppCompatActivity {
 
     private EditText ipTargetDDOS;
     private EditText numberThreads;
+
+    private RadioButton radioGET;
+    private RadioButton radioPOST;
+
     private EditText consolaDDOS;
     private Button botonAtack;
     private Button botonStop;
@@ -33,6 +38,9 @@ public class DDOSActivity extends AppCompatActivity {
         botonAtack = findViewById(R.id.botonAtack);
         botonStop = findViewById(R.id.botonStop);
         consolaDDOS = findViewById(R.id.editTextMultilineConsola);
+
+        radioGET = findViewById(R.id.radioGET);
+        radioPOST = findViewById(R.id.radioPOST);
 
         controller = new DDOSHandler(this);
         botonAtack.setOnClickListener(controller);
@@ -57,6 +65,14 @@ public class DDOSActivity extends AppCompatActivity {
         return consolaDDOS.getText().toString();
     }
 
+
+    public boolean isGET(){
+        return radioGET.isChecked();
+    }
+
+    public boolean isPOST(){
+        return radioPOST.isChecked();
+    }
 
     public String getTextNumberThread(){
 

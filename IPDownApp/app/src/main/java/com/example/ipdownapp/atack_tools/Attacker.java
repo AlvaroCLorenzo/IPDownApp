@@ -36,7 +36,11 @@ public class Attacker {
 
     private String urlAttack;
 
-    public Attacker(String urlAttack, int numThreads, Notificable notificable) throws Exception {
+    private RequestMethods metodo;
+
+    public Attacker(String urlAttack, int numThreads, RequestMethods metodo ,Notificable notificable) throws Exception {
+
+        this.metodo = metodo;
 
         this.urlAttack = urlAttack;
 
@@ -62,7 +66,7 @@ public class Attacker {
 
         for (int i = 0; i < this.num_threadsDDOS; i++) {
 
-            DdosThread thread = new DdosThread(colaDatos);
+            DdosThread thread = new DdosThread(metodo, colaDatos);
 
             thread.setRequestURL(urlAttack);
 

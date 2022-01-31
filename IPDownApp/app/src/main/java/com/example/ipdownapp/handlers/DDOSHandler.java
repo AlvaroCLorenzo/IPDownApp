@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.ipdownapp.activitys.DDOSActivity;
 import com.example.ipdownapp.atack_tools.Attacker;
 import com.example.ipdownapp.atack_tools.Notificable;
+import com.example.ipdownapp.atack_tools.RequestMethods;
 
 public class DDOSHandler implements View.OnClickListener, Notificable {
 
@@ -52,12 +53,21 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
     private void goDDOS() {
         String ipTarget = vista.getTextIpTargetDDOS();
         String numThreads = vista.getTextNumberThread();
+
+        RequestMethods metodoElegido = null;
+
+        if(vista.isGET()){
+            metodoElegido = RequestMethods.GET;
+        }else if(vista.isPOST()){
+            metodoElegido = RequestMethods.POST;
+        }
+
         //Evitamos que el usuario no introduzca alguno de los campos.
-        if(ipTarget != null  && numThreads !=null){
+        if(ipTarget != null  && numThreads !=null && metodoElegido != null){
             //si no existe el atacker lo crea
             if(attacker == null){
                 try{
-                    attacker = new Attacker(ipTarget, Integer.valueOf(numThreads), this);
+                    attacker = new Attacker(ipTarget, Integer.valueOf(numThreads), metodoElegido , this);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
