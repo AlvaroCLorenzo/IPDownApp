@@ -7,6 +7,16 @@ import com.example.ipdownapp.APITools.FreeGeoIPService;
 import com.example.ipdownapp.activitys.InfoActivity;
 import com.example.ipdownapp.models.IPInfo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -14,9 +24,6 @@ import retrofit2.Response;
 public class InfoHandler implements View.OnClickListener {
 
     private InfoActivity vista;
-
-    private final String URL_SERVICE = "https://api.freegeoip.app/";
-    private final String API_KEY = "fce938f0-8109-11ec-b2e9-6595f9a9e24d";
 
     private final String GOOGLE_MAPS_URL_REQUEST = "https://www.google.com/maps/search/?api=1&query=";
 
@@ -40,14 +47,28 @@ public class InfoHandler implements View.OnClickListener {
 
     private void consultarIp(String ip) {
 
-        FreeGeoIPService servicio = API.getApi(URL_SERVICE).create(FreeGeoIPService.class);
+        if(!validarIp(ip)){
 
-        Call<IPInfo> peticionIP = servicio.infoIp(ip, API_KEY);
+            ip = transformarDominoIp(ip);
+            System.out.println("IP obtenida: " + ip);
+        }
+
+        FreeGeoIPService servicio = API.getApi(MainHandler.URL_SERVICE).create(FreeGeoIPService.class);
+
+        Call<IPInfo> peticionIP = servicio.infoIp(MainHandler.API_KEY, ip);
 
         peticionIP.enqueue(new Callback<IPInfo>() {
             @Override
             public void onResponse(Call<IPInfo> call, Response<IPInfo> response) {
-                actualizarVista(response.body());
+
+                System.out.println(response);
+
+                if(response.body() != null){
+                    actualizarVista(response.body());
+                }else{
+                    vista.mensajeErrorConexion();
+                }
+
             }
 
             @Override
@@ -72,41 +93,56 @@ public class InfoHandler implements View.OnClickListener {
 
     }
 
-    private boolean validarIp(String ip) {
+    private String transformarDominoIp(String dominio){
 
-        boolean correcto = true;
+        String ip = "";
 
-        String[] trozos = ip.split("\\.");
+        try {
 
-        //tiene que tener 4 trozos
-        correcto = (trozos.length == 4);
+            ip = InetAddress.getByName(dominio).getHostAddress();
 
-        if(correcto){
-
-            int num;
-
-            //se recorren todos los trozos de la ip
-            for (int i=0; i<trozos.length && correcto; i++){
-
-                try{
-                    //se intenta convertir todos los trozos a numeros enteros
-                    num = Integer.valueOf(trozos[i]);
-
-                    //si se logra tranformar se evalua si es un numero menor o igual a 255
-                    correcto = (num <= 255);
-
-
-                }catch(NumberFormatException ex){
-                    //ai no se ha transformado correctamente en un número entero se niega
-                    correcto = false;
-
-                }
-
-            }
-
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
         }
 
-        return correcto;
+        return ip;
+    }
 
+    private boolean validarIp(String ip) {
+
+        final String IPv6Pattern = "(?ix)\\A(?:                                                  # Anchor address\n" +
+                " (?:  # Mixed\n" +
+                "  (?:[A-F0-9]{1,4}:){6}                                # Non-compressed\n" +
+                " |(?=(?:[A-F0-9]{0,4}:){2,6}                           # Compressed with 2 to 6 colons\n" +
+                "     (?:[0-9]{1,3}\\.){3}[0-9]{1,3}                     #    and 4 bytes\n" +
+                "     \\z)                                               #    and anchored\n" +
+                "  (([0-9A-F]{1,4}:){1,5}|:)((:[0-9A-F]{1,4}){1,5}:|:)  #    and at most 1 double colon\n" +
+                " |::(?:[A-F0-9]{1,4}:){5}                              # Compressed with 7 colons and 5 numbers\n" +
+                " )\n" +
+                " (?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.){3}  # 255.255.255.\n" +
+                " (?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])           # 255\n" +
+                "|     # Standard\n" +
+                " (?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}                    # Standard\n" +
+                "|     # Compressed\n" +
+                " (?=(?:[A-F0-9]{0,4}:){0,7}[A-F0-9]{0,4}               # Compressed with at most 7 colons\n" +
+                "    \\z)                                                #    and anchored\n" +
+                " (([0-9A-F]{1,4}:){1,7}|:)((:[0-9A-F]{1,4}){1,7}|:)    #    and at most 1 double colon\n" +
+                "|(?:[A-F0-9]{1,4}:){7}:|:(:[A-F0-9]{1,4}){7}           # Compressed with 8 colons\n" +
+                ")/[A-F0-9]{0,4}\\z                                                    # Anchor address";
+
+        String zeroTo255
+                = "(\\d{1,2}|(0|1)\\"
+                + "d{2}|2[0-4]\\d|25[0-5])";
+
+        // Regex for a digit from 0 to 255 and
+        // followed by a dot, repeat 4 times.
+        // this is the regex to validate an IP address.
+        String IPv4Pattern = zeroTo255 + "\\."
+                + zeroTo255 + "\\."
+                + zeroTo255 + "\\."
+                + zeroTo255;
+
+        //si la expresion regular de la ip cuadra con una ip4 o ip6
+        return (Pattern.matches(IPv6Pattern, ip) || Pattern.matches(IPv4Pattern, ip));
     }
 }
