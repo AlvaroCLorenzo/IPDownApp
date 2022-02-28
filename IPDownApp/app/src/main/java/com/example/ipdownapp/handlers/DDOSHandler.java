@@ -16,7 +16,6 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
     private DDOSActivity vista;
     private Attacker attacker;
 
-
     public DDOSHandler(DDOSActivity vista) {
         this.vista = vista;
     }
@@ -24,7 +23,6 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
 
             case R.id.botonAtack:
@@ -34,20 +32,14 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
             case R.id.botonStop:
                 stopDdos();
                 break;
-
-
         }
-
-
     }
 
     private void stopDdos() {
-
         if(attacker != null && attacker.isAttack()){
             attacker.pararAtaque();
             attacker = null;
         }
-
     }
 
     private void goDDOS() {

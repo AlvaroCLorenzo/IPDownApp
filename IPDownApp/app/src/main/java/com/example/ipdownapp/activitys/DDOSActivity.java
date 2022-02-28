@@ -45,8 +45,6 @@ public class DDOSActivity extends AppCompatActivity {
         controller = new DDOSHandler(this);
         botonAtack.setOnClickListener(controller);
         botonStop.setOnClickListener(controller);
-
-
     }
 
     public String getTextIpTargetDDOS() {
@@ -85,6 +83,7 @@ public class DDOSActivity extends AppCompatActivity {
         this.consolaDDOS.append(consolaDDOS + "\n");
     }
 
+    //Para lanzar mensajes de error por pantalla
     public void mensajeErrorCampos() {
         Toast.makeText(this, ERROR_CAMPOS, Toast.LENGTH_SHORT).show();
     }

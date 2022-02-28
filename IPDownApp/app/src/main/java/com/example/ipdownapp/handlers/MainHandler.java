@@ -37,22 +37,15 @@ public class MainHandler implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
-
             case R.id.btnInfo:
-
                 view.goInfo();
-
                 break;
 
             case R.id.btnDDOS:
-
                 view.goDDOS();
-
                 break;
         }
-
     }
 
     private void  consultarPublicIp() {
@@ -78,7 +71,6 @@ public class MainHandler implements View.OnClickListener {
                 view.mensajeErrorConexion();
             }
         });
-
     }
 
     private void consultarPrivateIp() {
@@ -96,7 +88,6 @@ public class MainHandler implements View.OnClickListener {
                         view.setPrivateIP(privateAddress);
                         encontrada = true;
                     }
-
                     if(encontrada){
                         break;
                     }

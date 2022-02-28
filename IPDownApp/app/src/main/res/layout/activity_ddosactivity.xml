@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logo_ipdownapp"
+    android:background="@drawable/fondo_ipdownapp"
     tools:context=".activitys.DDOSActivity">
 
     <ScrollView
@@ -138,14 +138,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="GET"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/radioPOST"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="48dp"
                     android:text="POST"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

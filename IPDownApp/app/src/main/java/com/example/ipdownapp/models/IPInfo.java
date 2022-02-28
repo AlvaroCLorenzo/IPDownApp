@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class IPInfo {
 
-
     @SerializedName(value = "ip")
     private String ip;
 
@@ -27,7 +26,6 @@ public class IPInfo {
     @SerializedName(value = "longitude")
     private String longitud;
 
-
     public IPInfo(String ip, String nombrePais, String nombreRegion, String ciudad, String codigoPostal, String latitud, String longitud) {
         this.ip = ip;
         this.nombrePais = nombrePais;
@@ -42,11 +40,9 @@ public class IPInfo {
         return ip;
     }
 
-
     public String getNombrePais() {
         return nombrePais;
     }
-
 
     public String getNombreRegion() {
         return nombreRegion;
@@ -60,7 +56,6 @@ public class IPInfo {
         return codigoPostal;
     }
 
-
     public String getLatitud() {
         return latitud;
     }
@@ -68,7 +63,6 @@ public class IPInfo {
     public String getLongitud() {
         return longitud;
     }
-
 
     @Override
     public String toString() {

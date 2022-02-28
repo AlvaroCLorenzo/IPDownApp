@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logo_ipdownapp"
+    android:background="@drawable/fondo_ipdownapp"
     tools:context=".activitys.MainActivity">
 
     <androidx.cardview.widget.CardView
