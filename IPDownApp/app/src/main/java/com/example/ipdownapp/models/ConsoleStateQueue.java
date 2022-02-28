@@ -9,19 +9,15 @@ import java.util.ArrayList;
 public class ConsoleStateQueue {
 
     boolean escribiendoMensajes;
-
     private ArrayList<String> mensajes;
 
     boolean escribiendoPeticionesExitosas;
-
     private long peticionesExitosas;
 
     boolean escribiendoPeticionesErroneas;
-
     private long peticionesErroneas;
 
     public ConsoleStateQueue() {
-
         escribiendoMensajes = false;
         mensajes = new ArrayList<String>();
 
@@ -30,9 +26,7 @@ public class ConsoleStateQueue {
 
         escribiendoPeticionesErroneas = false;
         peticionesErroneas = 0;
-
     }
-
 
     public synchronized long getPeticionesExitosas(){
         return peticionesExitosas;
@@ -46,22 +40,15 @@ public class ConsoleStateQueue {
         return new ArrayList<String>(mensajes);
     }
 
-
     public synchronized void addMensaje(String mensaje){
-
         while(escribiendoMensajes){
             esperar();
         }
-
         escribiendoMensajes = true;
-
         mensajes.add(mensaje);
 
         escribiendoMensajes = false;
-
         notifyAll();
-
-
     }
 
     public synchronized void limpiar(){
@@ -98,19 +85,15 @@ public class ConsoleStateQueue {
 
 
     public synchronized void incPeticionesErroneas(){
-
         while(escribiendoPeticionesErroneas){
             esperar();
         }
 
         escribiendoPeticionesErroneas = true;
-
         ++peticionesErroneas;
 
         escribiendoPeticionesErroneas = false;
-
         notifyAll();
-
     }
 
     private synchronized void esperar(){
