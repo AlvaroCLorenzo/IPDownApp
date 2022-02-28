@@ -37,18 +37,12 @@ public class InfoHandler implements View.OnClickListener {
     }
 
     private void buscarIp() {
-
         String ip = vista.getIpTarget();
-
         consultarIp(ip);
-
-
     }
 
     private void consultarIp(String ip) {
-
         if(!validarIp(ip)){
-
             ip = transformarDominoIp(ip);
             System.out.println("IP obtenida: " + ip);
         }
@@ -68,7 +62,6 @@ public class InfoHandler implements View.OnClickListener {
                 }else{
                     vista.mensajeErrorConexion();
                 }
-
             }
 
             @Override
@@ -76,11 +69,9 @@ public class InfoHandler implements View.OnClickListener {
                 vista.mensajeErrorConexion();
             }
         });
-
     }
 
     private void actualizarVista(IPInfo info){
-
         vista.setLabIp(info.getIp());
         vista.setLabCity(info.getCiudad());
         vista.setLabCountry(info.getNombrePais());
@@ -90,13 +81,10 @@ public class InfoHandler implements View.OnClickListener {
         String urlMapa = GOOGLE_MAPS_URL_REQUEST + info.getLatitud() + "," + info.getLongitud();
 
         vista.actualizarURLMapa(urlMapa);
-
     }
 
     private String transformarDominoIp(String dominio){
-
         String ip = "";
-
         try {
 
             ip = InetAddress.getByName(dominio).getHostAddress();
@@ -104,10 +92,10 @@ public class InfoHandler implements View.OnClickListener {
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-
         return ip;
     }
 
+    //Patron Regex para validar IPV4 e IPV6
     private boolean validarIp(String ip) {
 
         final String IPv6Pattern = "(?ix)\\A(?:                                                  # Anchor address\n" +
@@ -140,7 +128,7 @@ public class InfoHandler implements View.OnClickListener {
                 + zeroTo255 + "\\."
                 + zeroTo255;
 
-        //si la expresion regular de la ip cuadra con una ip4 o ip6
+        //Si la expresion regular de la ip cuadra con una IPV4 o IPV6 es true
         return (Pattern.matches(IPv6Pattern, ip) || Pattern.matches(IPv4Pattern, ip));
     }
 }

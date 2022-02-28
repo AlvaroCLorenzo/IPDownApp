@@ -47,11 +47,8 @@ public class InfoActivity extends AppCompatActivity{
     }
 
     private void confComponentes() {
-
         //web view
-
         navegador = findViewById(R.id.navegador);
-
         navegador.getSettings().setJavaScriptEnabled(true);
 
         // Setting on Touch Listener for handling the touch inside ScrollView
@@ -65,11 +62,9 @@ public class InfoActivity extends AppCompatActivity{
 
         //boton
         btnBuscar = findViewById(R.id.btnBuscar);
-
         btnBuscar.setOnClickListener(controlador);
 
         //labels
-
         labIp = findViewById(R.id.textViewIPResult);
         labCity = findViewById(R.id.textViewCityResult);
         labCountry = findViewById(R.id.textViewCountryResult);

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * El cometido de esta clase es gestionar el ataque Ddos.
+ * El cometido de esta clase es gestionar el ataque DDos.
  * Clase que sirve para desplegar el sistema de hilos del ataque
  * para pararlo cuando se requiera y para crear el hilo que notifica
  * al notificable de los mensajes.
@@ -25,43 +25,33 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Attacker {
 
     private int num_threadsDDOS;
-
     private DataController controladorConsola;
-
     private ConsoleStateQueue colaDatos;
-
     private ArrayList<DdosThread> hilosDdos;
-
     private boolean attack;
-
     private String urlAttack;
-
     private RequestMethods metodo;
 
     public Attacker(String urlAttack, int numThreads, RequestMethods metodo ,Notificable notificable) throws Exception {
-
         this.metodo = metodo;
 
         this.urlAttack = urlAttack;
 
-       this.num_threadsDDOS = numThreads;
+        this.num_threadsDDOS = numThreads;
 
-        //se crea el recurso compartido entre los hilos
+        //Se crea el recurso compartido entre los hilos
         colaDatos = new ConsoleStateQueue();
 
-        //se crea el hilo que acualizará la consola
+        //Se crea el hilo que acualizará la consola
         controladorConsola = new DataController(notificable,colaDatos);
 
         hilosDdos = new ArrayList<DdosThread>();
 
         attack = false;
-
     }
 
     public void iniciarAtaque(){
-
         attack = true;
-
         controladorConsola.start();
 
         for (int i = 0; i < this.num_threadsDDOS; i++) {
@@ -73,13 +63,10 @@ public class Attacker {
             hilosDdos.add(thread);
 
             thread.start();
-
         }
-
     }
 
     public void pararAtaque(){
-
         for (DdosThread i:hilosDdos){
             i.setRun(false);
         }
@@ -87,12 +74,10 @@ public class Attacker {
         controladorConsola.setRun(false);
 
         attack = false;
-
     }
 
     public boolean isAttack() {
         return attack;
     }
-
 
 }

@@ -13,7 +13,6 @@ import com.example.ipdownapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private MainHandler handler;
 
     private Button btnInfo;
@@ -30,17 +29,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.icono_app_ipdownapp_launcher_round);
 
         confElementos();
-
     }
 
     private void confElementos() {
-
         btnInfo = findViewById(R.id.btnInfo);
-
         btnDDOS = findViewById(R.id.btnDDOS);
-
         publicIP = findViewById(R.id.textViewPublicIPResult);
-
         privateIP = findViewById(R.id.textViewPrivateIPResult);
 
         this.handler = new MainHandler(this);
@@ -53,20 +47,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goInfo(){
-
         Intent pasador = new Intent(MainActivity.this, InfoActivity.class);
-
         startActivity(pasador);
-
     }
 
 
     public void goDDOS(){
-
         Intent pasador = new Intent(MainActivity.this, DDOSActivity.class);
-
         startActivity(pasador);
-
     }
 
     public void mensajeErrorConexion(){
