@@ -11,9 +11,12 @@ import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Hilo encargado de realizar peticiones en bucle.
+ * Hilo encargado de realizar peticiones en bucle y notificar al notificador
+ * que es la cola de mensajes que actualiza la terminal.
  */
 public class DdosThread extends Thread{
+
+    private final int TIEMPO_ESPERA_LECTURA_SOCKET = 10000;
 
     private static String POST_Method = "POST";
     private static String GET_Method = "GET";
@@ -42,6 +45,7 @@ public class DdosThread extends Thread{
         try{
             this.url = new URL(request);
         }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
@@ -65,7 +69,7 @@ public class DdosThread extends Thread{
 
         //Creamos un objeto connection
         connection = (HttpURLConnection) this.url.openConnection();
-        connection.setReadTimeout(10000);
+        connection.setReadTimeout(TIEMPO_ESPERA_LECTURA_SOCKET);
         connection.setUseCaches(false);
         connection.setRequestProperty("charset", "utf-8");
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");

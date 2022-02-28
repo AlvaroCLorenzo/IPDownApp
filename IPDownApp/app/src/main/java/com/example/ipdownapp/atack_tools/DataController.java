@@ -34,8 +34,8 @@ public class DataController extends Thread{
         while(run){
 
             //se conformael mensaje
-            mensaje.append("Number of succesfull requests: " + colaDatos.getPeticionesExitosas() + "\n");
-            mensaje.append("Number of failed requests: " + colaDatos.getPeticionesErroneas() + "\n");
+            mensaje.append("Completed requests: " + colaDatos.getPeticionesExitosas() + "\n");
+            mensaje.append("Uncompleted requests: " + colaDatos.getPeticionesErroneas() + "\n");
 
             colaMensajes = colaDatos.getMensajes();
 

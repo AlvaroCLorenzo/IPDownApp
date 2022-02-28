@@ -87,4 +87,8 @@ public class DDOSActivity extends AppCompatActivity {
     public void mensajeErrorCampos() {
         Toast.makeText(this, ERROR_CAMPOS, Toast.LENGTH_SHORT).show();
     }
+
+    public void mensajeErrorProtocolo() {
+        Toast.makeText(this, "The IP / URL must be composed with an HTTP or HTTPS protocol. To have a well-formed IP/URL it must start with http:// or https:// .", Toast.LENGTH_LONG).show();
+    }
 }

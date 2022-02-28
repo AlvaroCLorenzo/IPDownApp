@@ -16,6 +16,9 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
     private DDOSActivity vista;
     private Attacker attacker;
 
+    private final String HTTP_VALIDO = "http://";
+    private final String HTTPS_VALIDO = "https://";
+
     public DDOSHandler(DDOSActivity vista) {
         this.vista = vista;
     }
@@ -56,21 +59,38 @@ public class DDOSHandler implements View.OnClickListener, Notificable {
 
         //Evitamos que el usuario no introduzca alguno de los campos.
         if(ipTarget != null  && numThreads !=null && metodoElegido != null){
-            //si no existe el atacker lo crea
-            if(attacker == null){
-                try{
-                    attacker = new Attacker(ipTarget, Integer.valueOf(numThreads), metodoElegido , this);
-                } catch (Exception e) {
-                    e.printStackTrace();
+
+            if(validarProtocoloHTTP(ipTarget)){
+
+                //si no existe el atacker lo crea
+                if(attacker == null){
+                    try{
+                        attacker = new Attacker(ipTarget, Integer.valueOf(numThreads), metodoElegido , this);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+
+                if(!attacker.isAttack()){
+                    attacker.iniciarAtaque();
+                }
+
+            }else{
+                vista.mensajeErrorProtocolo();
             }
 
-            if(!attacker.isAttack()){
-                attacker.iniciarAtaque();
-            }
         }else{
             vista.mensajeErrorCampos();
         }
+    }
+
+    private boolean validarProtocoloHTTP(String ipTarget) {
+
+        String cadenaHTTP = ipTarget.substring(0,7);
+        String cadenaHTTPS = ipTarget.substring(0,8);
+
+        return (cadenaHTTP.equals(HTTP_VALIDO) || cadenaHTTPS.equals(HTTPS_VALIDO));
+
     }
 
     @Override

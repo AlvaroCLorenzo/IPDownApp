@@ -47,7 +47,7 @@
                 android:focusable="false"
                 android:fontFamily="@font/cutive_mono"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
+                android:inputType="textMultiLine|textNoSuggestions"
                 android:padding="10dp"
                 android:textColor="@color/teal_200"
                 app:layout_constraintBottom_toTopOf="@+id/botonAtack"
